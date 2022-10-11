@@ -60,7 +60,12 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Enviar peticion desde el formulario
+        $this->validate($request, [
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:5',
+            'nombre' => 'required'
+        ]);
     }
 
     /**

@@ -15,10 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Ruta para login
 Route::get('/', [UsuarioController::class, 'login'])->name('login');
 Route::post('/', [UsuarioController::class, 'validacion'])->name('login');
 
+//Ruta para la pagina principal
 Route::get('/index', [InicioController::class, 'index'])->name('index');
 
+//Ruta para cerrar sesion
 Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
+
+//Ruta para crear los usuarios
+Route::get('/users/register', [UsuarioController::class, 'create'])->name('users.create');
+Route::post('/users/register', [UsuarioController::class, 'store'])->name('users.store');
 

@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
             <div class="container-fluid">
                 <h2 class="me-5">
-                    <a class="navbar-brand" href="/admin/index">IT Office Solutions</a>
+                    <a class="navbar-brand" href="{{ route('index') }}">IT Office Solutions</a>
                 </h2>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,17 +25,17 @@
                             <a class="nav-link" aria-current="page" href="/admin/product/index">Productos(En produccion)</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/shipments/index">Embarques</a>
+                            <a class="nav-link" href="{{ route('index') }}">Embarques</a>
                         </li>
-                            @if (auth()->user()->admin === 1)
+                            {{-- @if (auth()->user()->admin === 1) --}}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/admin/user/register">Registrar nuevo usuario</a>
+                                    <a class="nav-link" href="{{ route('users.create') }}">Registrar nuevo usuario</a>
                                 </li>
                                 
                                 <li class="nav-item">
                                     <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
                                 </li>
-                            @endif
+                            {{-- @endif --}}
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/processors/index">Procesadores</a>
                         </li>
@@ -44,7 +44,7 @@
                         <li class="nav-item dropdown me-2">
                             
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ auth()->user()->nombre }}
+                                {{-- {{ auth()->user()->nombre }} --}}
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -64,6 +64,10 @@
             </div>
         </nav>
 
+        <div class="text-center my-4">
+            <h2 class="fw-bold">@yield('titulo')</h2>
+        </div>
+
     <div class="container-fluid">
         @yield('contenido')
     </div>
@@ -71,5 +75,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     
+    @yield('scripts')
 </body>
 </html>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Titulo_embarque;
 use Illuminate\Http\Request;
 
-class InicioController extends Controller
+class TituloEmbarqueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,7 @@ class InicioController extends Controller
      */
     public function index()
     {
-        $embarques = Titulo_embarque::all();
-
-        //Retornar la vista para el index
-        return view('inicio.index',[
-            'embarques' => $embarques
-        ]);
+        //
     }
 
     /**
@@ -46,10 +41,10 @@ class InicioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Titulo_embarque  $titulo_embarque
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Titulo_embarque $titulo_embarque)
     {
         //
     }
@@ -57,10 +52,10 @@ class InicioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Titulo_embarque  $titulo_embarque
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Titulo_embarque $titulo_embarque)
     {
         //
     }
@@ -69,10 +64,10 @@ class InicioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Titulo_embarque  $titulo_embarque
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Titulo_embarque $titulo_embarque)
     {
         //
     }
@@ -80,10 +75,10 @@ class InicioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Titulo_embarque  $titulo_embarque
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Titulo_embarque $titulo_embarque)
     {
         //
     }
