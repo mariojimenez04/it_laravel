@@ -25,7 +25,7 @@
                             <a class="nav-link" aria-current="page" href="/admin/product/index">Productos(En produccion)</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('embarues.index') }}">Embarques</a>
+                            <a class="nav-link" href="{{ route('embarque.index') }}">Embarques</a>
                         </li>
                             @if (auth()->user()->admin === 1)
                                 <li class="nav-item">

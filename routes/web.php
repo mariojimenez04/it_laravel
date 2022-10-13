@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TituloEmbarqueController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +43,13 @@ Route::post('/users/{user:name}/edit', [UsuarioController::class, 'update'])->na
 Route::delete('/usuario/{user:name}/delete', [UsuarioController::class, 'destroy'])->name('users.destroy');
 
 /* EMBARQUES */
-Route::get('/embarque/index', [LoginController::class, 'login'])->name('embarque.index');
+//Inicio
+Route::get('/embarque/index', [TituloEmbarqueController::class, 'index'])->name('embarque.index');
+
+//Registrar embarques
+Route::get('/embarque/create', [TituloEmbarqueController::class, 'create'])->name('embarque.create');
+Route::get('/embarque/create', [TituloEmbarqueController::class, 'store'])->name('embarque.store');
+
+//Actualizar embarques
+Route::get('/embarque/edit/{id}', [TituloEmbarqueController::class, 'edit'])->name('embarque.edit');
+Route::get('/embarque/edit/{id}', [TituloEmbarqueController::class, 'update'])->name('embarque.update');
