@@ -2,43 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(){
-        //Retornar la vista del login
-        return view('welcome');
-    }
-
-    public function validacion(Request $request){
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if( !auth()->attempt($request->only('email', 'password')) ){
-            return back()->with('mensaje', 'Credenciales incorrectas');
-        }
-
-        return redirect()->route('index');
-    }
-
-    public function logout(Request $request){
-        auth()->logout();
-
-        return redirect()->route('login');
-    }
 
     public function index()
     {
-       //Retornar la vista para listar los usuarios
-       return view('auth.index');
+
+        if(auth()->user()->admin === 1){
+            $usuarios = User::all();
+            //Retornar la vista para listar los usuarios
+            return view('auth.index',[
+                'usuarios' => $usuarios
+            ]);
+        }else {
+            abort(401);
+        }
+        
     }
 
     /**
@@ -48,8 +41,13 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //Retornar la vista para crear usuarios
-        return view('auth.create');
+        if(auth()->user()->admin === 1){
+            //Retornar la vista para crear usuarios
+            return view('auth.create');
+        }else {
+            abort(401);
+        }
+        
     }
 
     /**
@@ -66,6 +64,24 @@ class UsuarioController extends Controller
             'password' => 'required|confirmed|min:5',
             'nombre' => 'required'
         ]);
+
+        User::create([
+            'name' => $request->nombre,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'admin' => '0',
+            'supervisor' => '0',
+            'usuario' => '0',
+            'registrado_por' => auth()->user()->name
+        ]);
+
+        // //Otra forma de autenticar
+        // auth()->attempt([
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ]);
+        
+        return redirect('/users/index?id=2506');
     }
 
     /**
@@ -87,7 +103,16 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(auth()->user()->admin === 1){
+            $usuario = User::where('name', $id)->first();
+
+            //Retornar la vista para actualizar
+            return view('auth.edit',[
+                'usuario' => $usuario
+            ]);
+        }else {
+            abort(401);
+        }
     }
 
     /**
@@ -99,7 +124,21 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Buscar el nombre del usuario a actualizar
+        $usuario = User::where('name', $id)->first();
+
+        //Validar y actualizar en la BD
+        //Enviar peticion desde el formulario
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:5',
+            'nombre' => 'required'
+        ]);
+     
+        $usuario->password = Hash::make($request->input('password'));
+        $usuario->name = $request->input('nombre');
+        $usuario->save();
+
+        return redirect('/users/index?id=1506');
     }
 
     /**
@@ -110,6 +149,11 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::where('name', $id);
+
+        //Eliminar el usuario
+        $usuario->delete($id);
+
+        return redirect('/users/index?id=1405');
     }
 }

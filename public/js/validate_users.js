@@ -1,16 +1,18 @@
 //Variables
+//Expresion regular
+const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 //Seleccionar boton de enviar
 const btnEnviar = document.querySelector('#register');
 
 //Seleccionar formulario
 const formulario = document.querySelector('#formulario');
-console.log(formulario);
 
 //Seleccionar campo de email
 const email = document.querySelector('#email');
 
 //Seleccionar campo de email
-const password = document.querySelector('#password');
+// const password = document.querySelector('#password');
 
 //Seleccionar campo de email
 const password_confirmation = document.querySelector('#password_confirmation');
@@ -24,7 +26,7 @@ function eventListeners() {
 
     //Campos de el formulario
     email.addEventListener('blur', validateForm);
-    password.addEventListener('blur', validateForm);
+    // password.addEventListener('blur', validateForm);
     nombre.addEventListener('blur', validateForm);
 }
 
@@ -35,20 +37,55 @@ function startApp() {
 }
 
 function validateForm(e) {
-    if (e.target.value > 0) {
-        e.target.classList.remove('is-invalid');
-    }  else {
-        e.target.classList.add('is-invalid');
+    if (e.target.value.length > 0) {
+        //Elimina los errores...
+        const error = document.querySelector('p.error');
+        if (error) {
+            error.remove();
+        }
 
-        showError();
+        e.target.classList.remove('is-invalid');
+        e.target.classList.add('is-valid');
+    }  else {
+        e.target.classList.remove('is-valid');
+        e.target.classList.add('is-invalid');
+        showError('Todos los campos son obligatorios');
     }
+
+    if ( e.target.type === 'email' ) {
+
+        if ( er.test( e.target.value ) ) {
+           //Elimina los errores...
+            const error = document.querySelector('p.error');
+            if (error) {
+                error.remove();
+            }
+            
+            e.target.classList.remove('is-invalid');
+            e.target.classList.add('is-valid');
+        }else {
+            e.target.classList.remove('is-valid');
+            e.target.classList.add('is-invalid');
+
+            showError('Email no valido');
+        }
+
+    }
+
+    if (er.test( email.value ) /* && password.value != ''*/ && nombre.value != '') {
+        btnEnviar.disabled = false;
+    }
+
 }
 
-function showError() {
+function showError(mensaje) {
     const mensajeError = document.createElement('p');
 
-    mensajeError.textContent = 'Todos los campos son obligatorios';
-    mensajeError.classList.add('invalid-feedback');
+    mensajeError.textContent = mensaje;
+    mensajeError.classList.add('alerta', 'error');
 
-    formulario.appendChild(mensajeError);
+    const errores = document.querySelectorAll('.error');
+    if (errores.length === 0 ) {
+        formulario.appendChild(mensajeError);
+    }
 }

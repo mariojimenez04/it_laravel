@@ -25,26 +25,25 @@
                             <a class="nav-link" aria-current="page" href="/admin/product/index">Productos(En produccion)</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('index') }}">Embarques</a>
+                            <a class="nav-link" href="{{ route('embarues.index') }}">Embarques</a>
                         </li>
-                            {{-- @if (auth()->user()->admin === 1) --}}
+                            @if (auth()->user()->admin === 1)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('users.create') }}">Registrar nuevo usuario</a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/user/password/index">Editar perfiles</a>
-                                </li>
-                            {{-- @endif --}}
+                                    <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+                                </li>  
+                            @endif
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/processors/index">Procesadores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/processors/index">Productos</a>
                         </li>
                             
                     </ul>
                         <li class="nav-item dropdown me-2">
                             
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{-- {{ auth()->user()->nombre }} --}}
+                                {{ auth()->user()->name }}
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -64,6 +63,10 @@
             </div>
         </nav>
 
+        <div class="mt-3 container-fluid">
+            @yield('botones')
+        </div>
+
         <div class="text-center my-4">
             <h2 class="fw-bold">@yield('titulo')</h2>
         </div>
@@ -74,7 +77,7 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
-    
     @yield('scripts')
+    
 </body>
 </html>

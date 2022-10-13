@@ -14,7 +14,8 @@ class TituloEmbarqueController extends Controller
      */
     public function index()
     {
-        //
+        //Retornar la vista de los embarques
+        return view('embarques.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class TituloEmbarqueController extends Controller
      */
     public function create()
     {
-        //
+        //Retornar la vista para crear embarques
+        return view('embarques.create');
     }
 
     /**
@@ -46,7 +48,8 @@ class TituloEmbarqueController extends Controller
      */
     public function show(Titulo_embarque $titulo_embarque)
     {
-        //
+        //Retornar la vista para ver el embarque
+        return view('embarques.show');
     }
 
     /**
@@ -57,7 +60,8 @@ class TituloEmbarqueController extends Controller
      */
     public function edit(Titulo_embarque $titulo_embarque)
     {
-        //
+        //Retornar la vista para editar el embarque
+        return view('embarques.edit');
     }
 
     /**
