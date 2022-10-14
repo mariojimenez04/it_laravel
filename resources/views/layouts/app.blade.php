@@ -25,18 +25,26 @@
                             <a class="nav-link" aria-current="page" href="/admin/product/index">Productos(En produccion)</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('embarque.index') }}">Embarques</a>
+                            <a class="nav-link" href="{{ route('embarque.index') }}">Embarques(Laptops)</a>
                         </li>
-                            @if (auth()->user()->admin === 1)
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-                                </li>  
-                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/processors/index">Embarques(Productos)</a>
+                        </li>
+
+                        @if (auth()->user()->supervisor === 1 && auth()->user()->admin === 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/processors/index">Exportar Series(Laptops)</a>
+                            </li>
+                        @endif
+
+                        @if (auth()->user()->admin === 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+                            </li>  
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/processors/index">Procesadores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/processors/index">Productos</a>
                         </li>
                             
                     </ul>
@@ -47,8 +55,8 @@
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/admin/index">Inicio</a></li>
-                                <li><a class="dropdown-item" href="/admin/user/edit">Editar perfil</a></li>
+                                <li><a class="dropdown-item" href="{{ route('index') }}">Inicio</a></li>
+                                <li><a class="dropdown-item" href="{{ route('users.edit', auth()->user()->name) }}">Editar perfil</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST">

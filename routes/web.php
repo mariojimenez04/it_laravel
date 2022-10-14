@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\LaptopDetalleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TituloEmbarqueController;
 use App\Http\Controllers\UsuarioController;
@@ -48,8 +49,23 @@ Route::get('/embarque/index', [TituloEmbarqueController::class, 'index'])->name(
 
 //Registrar embarques
 Route::get('/embarque/create', [TituloEmbarqueController::class, 'create'])->name('embarque.create');
-Route::get('/embarque/create', [TituloEmbarqueController::class, 'store'])->name('embarque.store');
+Route::post('/embarque/create', [TituloEmbarqueController::class, 'store'])->name('embarque.store');
 
 //Actualizar embarques
-Route::get('/embarque/edit/{id}', [TituloEmbarqueController::class, 'edit'])->name('embarque.edit');
-Route::get('/embarque/edit/{id}', [TituloEmbarqueController::class, 'update'])->name('embarque.update');
+Route::get('/embarque/{titulo_embarque:id_emb}/edit', [TituloEmbarqueController::class, 'edit'])->name('embarque.edit');
+Route::post('/embarque/{titulo_embarque:id_emb}/edit', [TituloEmbarqueController::class, 'update'])->name('embarque.update');
+
+//Eliminar embarques
+Route::delete('/embarque/{titulo_embarque:id_emb}/edit', [TituloEmbarqueController::class, 'destroy'])->name('embarque.destroy');
+
+/* LAPTOP DETALLES */
+//Ruta del inicio
+Route::get('/laptop/index/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'index'])->name('laptop.index');
+
+//Ruta para registrar laptop
+Route::get('/laptop/create/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'create'])->name('laptop.create');
+
+/* NUMEROS DE SERIE DE LAPTOPS */
+//Ruta para el index
+
+

@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Titulo_embarque;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TituloEmbarqueController extends Controller
 {
-    /**
+    /*
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $embarques = Titulo_embarque::all();
+
         //Retornar la vista de los embarques
-        return view('embarques.index');
+        return view('embarques.index',[
+            'embarques' => $embarques
+        ]);
     }
 
     /**
@@ -25,8 +30,11 @@ class TituloEmbarqueController extends Controller
      */
     public function create()
     {
+        $id_emb = 'EMB-' . rand();
         //Retornar la vista para crear embarques
-        return view('embarques.create');
+        return view('embarques.create', [
+            'id_emb' => $id_emb,
+        ]);
     }
 
     /**
@@ -37,7 +45,22 @@ class TituloEmbarqueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Registrar el embarque
+        $this->validate($request, [
+            'id_emb' => 'required|unique:titulo_embarques',
+            'titulo' => 'required',
+            'descripcion' => 'required'
+        ]);
+
+        Titulo_embarque::create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'user_id' => auth()->user()->id,
+            'modificado_por' => auth()->user()->name,
+            'id_emb' => $request->id_emb
+        ]);
+
+        return redirect('/embarque/index?id=1415');
     }
 
     /**
@@ -60,8 +83,12 @@ class TituloEmbarqueController extends Controller
      */
     public function edit(Titulo_embarque $titulo_embarque)
     {
+        // dd($titulo_embarque);
+        $embarque = $titulo_embarque;
         //Retornar la vista para editar el embarque
-        return view('embarques.edit');
+        return view('embarques.edit',[
+            'embarque' => $embarque,
+        ]);
     }
 
     /**
@@ -73,7 +100,20 @@ class TituloEmbarqueController extends Controller
      */
     public function update(Request $request, Titulo_embarque $titulo_embarque)
     {
-        //
+        // dd('Actualizando');
+        $embarque = $titulo_embarque;
+        // dd($usuario);
+        //Actualizar la tabla de titulo embarque
+        $this->validate($request,[
+            'titulo' => 'required',
+            'descripcion' => 'required'
+        ]);
+
+        $embarque->titulo = $request->titulo;
+        $embarque->descripcion = $request->descripcion;
+        $embarque->save();
+
+        return redirect('/embarque/index?id=1416');
     }
 
     /**
@@ -84,6 +124,10 @@ class TituloEmbarqueController extends Controller
      */
     public function destroy(Titulo_embarque $titulo_embarque)
     {
-        //
+        $embarque = $titulo_embarque;
+        //Eliminar el embarque
+        $embarque->delete($titulo_embarque);
+
+        return redirect('/embarque/index?id=1417');
     }
 }
