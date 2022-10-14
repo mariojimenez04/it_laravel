@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laptop_detalle;
 use Illuminate\Http\Request;
 
 class LaptopDetalleController extends Controller
@@ -11,9 +12,15 @@ class LaptopDetalleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $titulo = $id;
+        $detalle_laptops = Laptop_detalle::where('id_titulo', $id)->get();
+        //Retornar la vista de el embarque
+        return view('embarques.laptops.index', [
+            'titulo' => $titulo,
+            'detalle_laptops' => $detalle_laptops,
+        ]);
     }
 
     /**
@@ -21,8 +28,9 @@ class LaptopDetalleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        $id_embarque = $id;
         //
     }
 
