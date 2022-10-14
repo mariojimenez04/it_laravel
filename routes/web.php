@@ -48,8 +48,10 @@ Route::get('/embarque/index', [TituloEmbarqueController::class, 'index'])->name(
 
 //Registrar embarques
 Route::get('/embarque/create', [TituloEmbarqueController::class, 'create'])->name('embarque.create');
-Route::get('/embarque/create', [TituloEmbarqueController::class, 'store'])->name('embarque.store');
+Route::post('/embarque/create', [TituloEmbarqueController::class, 'store'])->name('embarque.store');
 
 //Actualizar embarques
 Route::get('/embarque/edit/{id}', [TituloEmbarqueController::class, 'edit'])->name('embarque.edit');
-Route::get('/embarque/edit/{id}', [TituloEmbarqueController::class, 'update'])->name('embarque.update');
+Route::post('/embarque/edit/{id}', [TituloEmbarqueController::class, 'update'])->name('embarque.update');
+
+Route::delete();
