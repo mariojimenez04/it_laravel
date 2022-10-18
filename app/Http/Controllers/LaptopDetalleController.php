@@ -32,6 +32,10 @@ class LaptopDetalleController extends Controller
     {
         $id_embarque = $id;
         //
+        return view('embarques.laptops.create',[
+            'id_embarque' => $id_embarque,
+        ]);
+
     }
 
     /**
@@ -40,9 +44,41 @@ class LaptopDetalleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        //Realizar la validacion
+        $this->validate($request,[
+            'id_detalle' => 'required',
+            'modelo' => 'required',
+            'numero_serie' => 'required|alpha_num|unique:laptop_detalles,numero_serie',
+            'procesador' => 'required',
+            'tamano' => 'required',
+            'color' => 'required',
+            'capacidad' => 'required',
+            'ram' => 'required',
+            'cantidad' => 'required|numeric|between:1,1',
+        ]);
+
+        Laptop_detalle::create([
+            'id_detalle' => $request->id_detalle,
+            'modelo' => $request->modelo,
+            'numero_serie' => $request->numero_serie,
+            'diagnostico' => $request->diagnostico ?? 'N/A',
+            'acciones' => $request->acciones ?? 'N/A',
+            'procesador' => $request->procesador,
+            'tamano' => $request->tamano,
+            'color' => $request->color,
+            'capacidad' => $request->capacidad,
+            'ram' => $request->ram,
+            'cantidad' => 1,
+            'status' => $request->status ?? 'N/A',
+            'observaciones' => $request->observaciones ?? 'N/A',
+            'entregado' => 0,
+            'modificado_por' => auth()->user()->name,
+            'id_titulo' => $id,
+        ]);
+
+        return redirect('/laptop/index/'. $id);
     }
 
     /**
@@ -64,7 +100,12 @@ class LaptopDetalleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $laptop = Laptop_detalle::where('numero_serie', $id)->first();
+
+        //Retornar la vista para editar
+        return view('embarques.laptops.edit',[
+            'laptop' => $laptop
+        ]);
     }
 
     /**
@@ -76,7 +117,38 @@ class LaptopDetalleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Actualizar el registro
+        $laptop = Laptop_detalle::where('numero_serie', $id)->first();
+
+        $serie = $laptop->numero_serie;
+
+        $this->validate($request,[
+            'id_detalle' => 'required',
+            'modelo' => 'required',
+            'numero_serie' => 'required|alpha_num|unique:laptop_detalles,numero_serie',
+            'procesador' => 'required',
+            'tamano' => 'required',
+            'color' => 'required',
+            'capacidad' => 'required',
+            'ram' => 'required',
+            'cantidad' => 'required|numeric|between:1,1',
+        ]);
+
+        $laptop->modelo = $request->modelo;
+        $laptop->numero_serie = $request->numero_serie;
+        $laptop->diagnostico = $request->diagnostico;
+        $laptop->acciones = $request->acciones;
+        $laptop->procesador = $request->procesador;
+        $laptop->tamano = $request->tamano;
+        $laptop->color = $request->color;
+        $laptop->capacidad = $request->capacidad;
+        $laptop->ram = $request->ram;
+        $laptop->cantidad = $request->cantidad;
+        $laptop->status = $request->status;
+        $laptop->observaciones = $request->observaciones;
+        $laptop->save();
+
+        return redirect('/laptop/index/' . $laptop->serie)->with('success', 'Registro actualizado existosamente');
     }
 
     /**

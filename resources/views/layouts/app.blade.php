@@ -71,7 +71,7 @@
             </div>
         </nav>
 
-        <div class="mt-3 container-fluid">
+        <div class="mt-3 container">
             @yield('botones')
         </div>
 
@@ -79,7 +79,7 @@
             <h2 class="fw-bold">@yield('titulo')</h2>
         </div>
 
-    <div class="container-fluid">
+    <div>
         @yield('contenido')
     </div>
 

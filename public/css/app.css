@@ -590,3 +590,11 @@ a{
   font-size: 0.875em;
   color: #dc3545;
 }
+
+.bd-callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  background-color: #fffbec;
+  border-left: 0.25rem solid #ffde78;
+}

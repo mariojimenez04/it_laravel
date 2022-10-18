@@ -3,6 +3,7 @@
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LaptopDetalleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TituloEmbarqueController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -64,8 +65,16 @@ Route::get('/laptop/index/{laptop_detalles:id_titulo}', [LaptopDetalleController
 
 //Ruta para registrar laptop
 Route::get('/laptop/create/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'create'])->name('laptop.create');
+Route::post('/laptop/create/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'store'])->name('laptop.store');
+
+//Ruta para actualizar Laptop
+Route::get('/laptop/edit/{laptop_detalles:numero_serie}', [LaptopDetalleController::class, 'edit'])->name('laptop.edit');
+Route::post('/laptop/edit/{laptop_detalles:numero_serie}', [LaptopDetalleController::class, 'update'])->name('laptop.update');
 
 /* NUMEROS DE SERIE DE LAPTOPS */
 //Ruta para el index
+Route::get('/serie/index/{laptop_detalles:id_titulo}', [SerieController::class, 'index'])->name('serie.index');
 
-
+//Ruta para generar la importacion
+Route::get('/serie/create/{laptop_detalles:id_titulo}', [SerieController::class, 'create'])->name('serie.create');
+Route::post('/serie/create/{laptop_detalles:id_titulo}', [SerieController::class, 'store'])->name('serie.store');
