@@ -63,7 +63,9 @@
                     <td>{{ $detalle->entregado }}</td>
                     <td>{{ $detalle->modificado_por }}</td>
                     <td>{{ $detalle->updated_at }}</td>
-                    <form action="">
+                    <form action="{{ route('laptop.destroy', $detalle->numero_serie) }}" method="POST">
+                        @csrf
+                        @method('delete')
                             <td class="row gap-2">
                                 <a href="{{ route('laptop.edit', $detalle->numero_serie) }}" class="btn btn-warning">Editar</a>
                                 <input type="submit" value="Eliminar" class="btn btn-danger">

@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Laptop_detalle;
 use Illuminate\Http\Request;
+use App\Models\Laptop_detalle;
+use App\Exports\LaptopDetalleExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaptopDetalleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function exportExcel() {
+        return Excel::download(new LaptopDetalleExport, 'libros-excel.xlsx');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -120,12 +130,10 @@ class LaptopDetalleController extends Controller
         //Actualizar el registro
         $laptop = Laptop_detalle::where('numero_serie', $id)->first();
 
-        $serie = $laptop->numero_serie;
+        $serie = $laptop->id_titulo;
 
         $this->validate($request,[
-            'id_detalle' => 'required',
             'modelo' => 'required',
-            'numero_serie' => 'required|alpha_num|unique:laptop_detalles,numero_serie',
             'procesador' => 'required',
             'tamano' => 'required',
             'color' => 'required',
@@ -135,7 +143,6 @@ class LaptopDetalleController extends Controller
         ]);
 
         $laptop->modelo = $request->modelo;
-        $laptop->numero_serie = $request->numero_serie;
         $laptop->diagnostico = $request->diagnostico;
         $laptop->acciones = $request->acciones;
         $laptop->procesador = $request->procesador;
@@ -148,7 +155,7 @@ class LaptopDetalleController extends Controller
         $laptop->observaciones = $request->observaciones;
         $laptop->save();
 
-        return redirect('/laptop/index/' . $laptop->serie)->with('success', 'Registro actualizado existosamente');
+        return redirect('/laptop/index/' . $serie)->with('success', 'Registro actualizado existosamente');
     }
 
     /**
@@ -159,6 +166,12 @@ class LaptopDetalleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $laptop = Laptop_detalle::where('numero_serie', $id)->first();
+
+        $redirect = $laptop->id_titulo;
+
+        $laptop->delete($id);
+
+        return redirect('/laptop/index/' . $redirect)->with('success', 'Registro eliminado existosamente');
     }
 }

@@ -55,12 +55,11 @@ class TituloEmbarqueController extends Controller
         Titulo_embarque::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'user_id' => auth()->user()->id,
             'modificado_por' => auth()->user()->name,
             'id_emb' => $request->id_emb
         ]);
 
-        return redirect('/embarque/index?id=1415');
+        return redirect()->route('embarque.index')->with('success', 'Registro creado exitosamente');
     }
 
     /**
@@ -113,7 +112,7 @@ class TituloEmbarqueController extends Controller
         $embarque->descripcion = $request->descripcion;
         $embarque->save();
 
-        return redirect('/embarque/index?id=1416');
+        return redirect()->route('embarque.index')->with('success', 'Registro actualizado exitosamente');
     }
 
     /**
@@ -128,6 +127,6 @@ class TituloEmbarqueController extends Controller
         //Eliminar el embarque
         $embarque->delete($titulo_embarque);
 
-        return redirect('/embarque/index?id=1417');
+        return redirect()->route('embarque.index')->with('success', 'Registro eliminado exitosamente');
     }
 }

@@ -10,6 +10,13 @@
 @endsection
 
 @section('contenido')
+
+@if ( session('success'))
+    <div class="alert alert-success text-center">
+        {{ session('success') }}
+    </div>
+@endif
+
 <table class="table table-hover">
     <thead>
     <tr>

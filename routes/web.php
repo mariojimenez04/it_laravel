@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TituloEmbarqueController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Laptop_detalle;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,12 @@ Route::post('/laptop/create/{laptop_detalles:id_titulo}', [LaptopDetalleControll
 //Ruta para actualizar Laptop
 Route::get('/laptop/edit/{laptop_detalles:numero_serie}', [LaptopDetalleController::class, 'edit'])->name('laptop.edit');
 Route::post('/laptop/edit/{laptop_detalles:numero_serie}', [LaptopDetalleController::class, 'update'])->name('laptop.update');
+
+//Ruta para eliminar
+Route::delete('/embarque/delete/{laptop_detalles:numero_serie}', [LaptopDetalleController::class, 'destroy'])->name('laptop.destroy');
+
+//Ruta para exportar a excel
+Route::get('/laptop/export/excel', [LaptopDetalleController::class, 'exportExcel'])->name('laptop.excel');
 
 /* NUMEROS DE SERIE DE LAPTOPS */
 //Ruta para el index

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('botones')
-    <a href="{{ route('laptop.index', $laptop->id_titulo)}}" class="btn btn-dark">Volver</a>
+    <a href="{{ route('laptop.index', $laptop->numero_serie)}}" class="btn btn-dark">Volver</a>
 @endsection
 
 @section('titulo')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('contenido')
-<form id="formulario" class="container" action="{{ route('laptop.store', $laptop->id_titulo) }}" method="POST">
+<form id="formulario" class="container" action="{{ route('laptop.update', $laptop->numero_serie) }}" method="POST">
     @csrf
     <div class="row row-cols-2 gap-5">
 

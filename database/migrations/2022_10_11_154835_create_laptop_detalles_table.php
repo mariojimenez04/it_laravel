@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('id_detalle')->nullable();
             $table->string('modelo')->nullable();
             $table->string('numero_serie')->nullable()->unique();
+            $table->string('observaciones')->nullable();
             $table->longText('diagnostico')->nullable();
             $table->longText('acciones')->nullable();
             $table->string('procesador')->nullable();
@@ -27,10 +28,9 @@ return new class extends Migration
             $table->string('ram')->nullable();
             $table->string('cantidad')->nullable();
             $table->string('status')->nullable();
-            $table->string('observaciones')->nullable();
             $table->boolean('entregado')->nullable();
-            // $table->foreignId('titulo_embarques_id')->constrained('titulo_embarques', 'id')->nullOnDelete('set null');
             $table->string('modificado_por')->nullable();
+            $table->string('id_titulo')->nullable();
             $table->timestamps();
         });
     }

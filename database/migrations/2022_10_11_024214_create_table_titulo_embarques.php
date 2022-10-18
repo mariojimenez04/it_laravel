@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('titulo_embarques', function (Blueprint $table) {
             $table->id();
+            $table->string('id_emb')->nullable()->unique();
             $table->string('titulo')->nullable();
             $table->string('descripcion')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('modificado_por');
             $table->timestamps();
         });

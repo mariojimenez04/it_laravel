@@ -19,6 +19,7 @@
 <div class="bd-callout bd-callout-warning container">
     Para una correcta importacion de datos toma en cuenta los siguientes datos en el encabezado en el archivo excel:
     <div class="mt-2">
+        <p><strong>¡Importante!</strong> el titulo de el embarque debe ser el mismo de el archivo que se va a importar</p>
         <p>Serie</p>
         <p>Descripcion</p>
         <p>Cantidad</p>
