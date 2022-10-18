@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LaptopDetalleController;
 use App\Http\Controllers\LoginController;
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Rutas para la ADMINISTRACION */
+//Index
+Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
 
 //Ruta para login
 Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -76,7 +81,7 @@ Route::post('/laptop/edit/{laptop_detalles:numero_serie}', [LaptopDetalleControl
 Route::delete('/embarque/delete/{laptop_detalles:numero_serie}', [LaptopDetalleController::class, 'destroy'])->name('laptop.destroy');
 
 //Ruta para exportar a excel
-Route::get('/laptop/export/excel', [LaptopDetalleController::class, 'exportExcel'])->name('laptop.excel');
+Route::get('/laptop/export/excel/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'exportExcel'])->name('laptop.excel');
 
 /* NUMEROS DE SERIE DE LAPTOPS */
 //Ruta para el index

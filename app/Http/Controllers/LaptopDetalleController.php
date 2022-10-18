@@ -14,8 +14,8 @@ class LaptopDetalleController extends Controller
         $this->middleware('auth');
     }
 
-    public function exportExcel() {
-        return Excel::download(new LaptopDetalleExport, 'libros-excel.xlsx');
+    public function exportExcel($id) {
+        return Excel::download(new LaptopDetalleExport($id), 'libros-excel.xlsx');
     }
     /**
      * Display a listing of the resource.

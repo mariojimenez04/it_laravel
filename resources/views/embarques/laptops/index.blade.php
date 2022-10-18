@@ -5,6 +5,7 @@
     <a href="{{ route('laptop.create', $titulo) }}" class="btn btn-dark">Registrar laptop</a>
     <a href="{{ route('serie.create', $titulo) }}" class="btn btn-dark">Importar No. series</a>
     <a href="{{ route('serie.index', $titulo) }}" class="btn btn-dark">Ver No. series</a>
+    <a href="{{ route('laptop.excel', $titulo) }}" class="btn btn-success">Descargar en Excel</a>
 @endsection
 
 @section('titulo')

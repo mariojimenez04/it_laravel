@@ -21,30 +21,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/admin/product/index">Productos(En produccion)</a>
-                        </li> -->
+                        
+                        @if (auth()->user()->supervisor === 1 && auth()->user()->admin === 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.index') }}">Administracion</a>
+                            </li>
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('embarque.index') }}">Embarques(Laptops)</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/processors/index">Embarques(Productos)</a>
-                        </li>
-
-                        @if (auth()->user()->supervisor === 1 && auth()->user()->admin === 1)
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/processors/index">Exportar Series(Laptops)</a>
-                            </li>
-                        @endif
-
-                        @if (auth()->user()->admin === 1)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-                            </li>  
-                        @endif
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/processors/index">Procesadores</a>
                         </li>
                             
                     </ul>

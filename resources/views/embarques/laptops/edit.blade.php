@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('botones')
-    <a href="{{ route('laptop.index', $laptop->numero_serie)}}" class="btn btn-dark">Volver</a>
+    <a href="{{ route('laptop.index', $laptop->id_titulo)}}" class="btn btn-dark">Volver</a>
 @endsection
 
 @section('titulo')
