@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ram extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'ram',
+        'registrado_por',
+    ];
 }

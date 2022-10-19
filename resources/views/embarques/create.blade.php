@@ -16,7 +16,7 @@
         <div class="col-sm-2">
 
             <label for="id_emb" class="form-label">ID embarque</label>
-            <input type="id_emb" id="id_emb" name="id_emb" class="form-control form-control-sm @error('id_emb') is-invalid @enderror" value="{{ $id_emb }}">
+            <input type="text" id="id_emb" name="id_emb" class="form-control form-control-sm @error('id_emb') is-invalid @enderror" value="{{ $id_emb }}">
 
             @error('id_emb')
                 <p class="invalid-feedback">{{ $message }}</p>
@@ -26,7 +26,7 @@
         <div class="col-sm-5">
 
             <label for="titulo" class="form-label">Titulo</label>
-            <input type="titulo" id="titulo" name="titulo" class="form-control form-control-sm @error('titulo') is-invalid @enderror" value="{{ old('titulo') }}">
+            <input type="text" id="titulo" name="titulo" class="form-control form-control-sm @error('titulo') is-invalid @enderror" value="{{ old('titulo') }}">
 
             @error('titulo')
                 <p class="invalid-feedback">{{ $message }}</p>
@@ -36,7 +36,7 @@
         <div class="col-sm-5">
 
             <label for="descripcion" class="form-label">Descripcion</label>
-            <input type="descripcion" id="descripcion" name="descripcion" class="form-control form-control-sm @error('descripcion') is-invalid @enderror" value="{{ old('descripcion') }}">
+            <input type="text" id="descripcion" name="descripcion" class="form-control form-control-sm @error('descripcion') is-invalid @enderror" value="{{ old('descripcion') }}">
 
             @error('descripcion')
                 <p class="invalid-feedback">{{ $message }}</p>
