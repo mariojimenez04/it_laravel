@@ -1,56 +1,59 @@
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Numero serie</th>
-        <th scope="col">Observaciones</th>
-        <th scope="col">Diagnostico</th>
-        <th scope="col">Acciones IT</th>
-        <th scope="col">Procesador</th>
-        <th scope="col">Tamaño</th>
-        <th scope="col">Color</th>
-        <th scope="col">Capacidad</th>
-        <th scope="col">RAM</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Status</th>
-        <th scope="col">Entregado</th>
-        <th scope="col">Modificado Por</th>
-        <th scope="col">Ultima modificacion</th>
-        <th scope="col">Acciones</th>
-    </tr>
-    </thead>
-    <tbody class="table-group-divider">
+@extends('layouts.app')
 
-        @foreach ($detalle_laptops as $detalle)
-            <tr>
+@section('botones')
+    <a href="{{ route('laptop.index', $id) }}" class="btn btn-dark">Volver</a>
+@endsection
 
-                <th>{{ $detalle->id_detalle }}</th>
-                <th>{{ $detalle->modelo }}</th>
-                <td>{{ $detalle->numero_serie }}</td>
-                <td>{{ $detalle->observaciones }}</td>
-                <td>{{ $detalle->diagnostico }}</td>
-                <td>{{ $detalle->acciones }}</td>
-                <td>{{ $detalle->procesador }}</td>
-                <td>{{ $detalle->tamano }}</td>
-                <td>{{ $detalle->color }}</td>
-                <td>{{ $detalle->capacidad }}</td>
-                <td>{{ $detalle->ram }}</td>
-                <td>{{ $detalle->cantidad }}</td>
-                <td>{{ $detalle->status }}</td>
-                <td>{{ $detalle->entregado }}</td>
-                <td>{{ $detalle->modificado_por }}</td>
-                <td>{{ $detalle->updated_at }}</td>
-                <form action="{{ route('laptop.destroy', $detalle->numero_serie) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                        <td class="row gap-2">
-                            <a href="{{ route('laptop.edit', $detalle->numero_serie) }}" class="btn btn-warning">Editar</a>
-                            <input type="submit" value="Eliminar" class="btn btn-danger">
-                        </td>
-                </form>
-            </tr>
-        @endforeach
-    
-    </tbody>
-</table>
+@section('titulo')
+    Importar series - {{ $id }}
+@endsection
+
+@section('contenido')
+
+@foreach ($errors->all() as $error)
+    <div class="alerta container mt-2">
+        {{ $error }}
+    </div>
+@endforeach
+
+<div class="bd-callout bd-callout-warning container">
+    Para una correcta importacion de datos toma en cuenta los siguientes datos en el encabezado en el archivo excel:
+    <div class="mt-2">
+        <p><strong>¡Importante!</strong> el titulo de el embarque debe ser el mismo de el archivo que se va a importar</p>
+        <p>id detalle</p>
+        <p>modelo</p>
+        <p>numero serie</p>
+        <p>observaciones</p>
+        <p>diagnostico</p>
+        <p>acciones</p>
+        <p>procesador</p>
+        <p>tamano</p>
+        <p>color</p>
+        <p>capacidad</p>
+        <p>ram</p>
+        <p>cantidad</p>
+        <p>status</p>
+        <p>entregado</p>
+        <p>id titulo</p>
+    </div>
+</div>
+
+<form class="container" action="{{ route('laptop.import.excel', $id) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <label for="laptop_import" class="form-label">Archivo Excel</label>
+            <input class="form-control" name="laptop_import" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+
+            @error('laptop_import')
+                <p class="invalid-feedback">{{ $message }}</p>
+            @enderror
+        </div>
+
+    </div>
+
+    <input type="submit" value="Importar archivo" class="btn btn-dark mt-3">
+</form>
+@endsection

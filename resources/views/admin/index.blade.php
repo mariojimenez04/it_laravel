@@ -11,7 +11,7 @@
 
 @section('contenido')
 
-<div class="table-responsive">
+<div class="table-responsive container">
     <h3 class="text-center my-5">Lista de memorias RAM</h3>
     <table class="table table-hover">
         <thead>
@@ -25,23 +25,13 @@
         </thead>
         <tbody class="table-group-divider">
     
-            {{-- @foreach ($series as $serie)
+            @foreach ($rams as $ram)
                 <tr>
-                    <th>{{ $serie->id }}</th>
-                    <th scope="row">{{ $serie->serie }}</th>
-                    <td>{{ $serie->descripcion }}</td>
-                    <td>{{ $serie->cantidad }}</td>
-                    <td>{{ $serie->palet }}</td>
-                    <td>{{ $serie->registrado_por }}</td>
-                    <td>{{ $serie->created_at }}</td>
-                    <td>{{ $serie->updated_at }}</td>
-                    <td>
-                        <form action="">
-                            <input type="submit" value="Eliminar" class="btn btn-danger">
-                        </form>
-                    </td>
+                    <th>{{ $ram->id }}</th>
+                    <th scope="row">{{ $ram->ram }}</th>
+                    <th scope="row">{{ $ram->registrado_por }}</th>
                 </tr>
-            @endforeach --}}
+            @endforeach
         
         </tbody>
     </table>

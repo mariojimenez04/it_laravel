@@ -25,6 +25,6 @@
 
     </div>
 
-    <input type="submit" value="Registrar embarque" class="btn btn-dark mt-3">
+    <input type="submit" value="Registrar RAM" class="btn btn-dark mt-3">
 </form>
 @endsection

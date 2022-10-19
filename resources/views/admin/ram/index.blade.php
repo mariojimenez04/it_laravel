@@ -10,6 +10,13 @@
 @endsection
 
 @section('contenido')
+
+@if ( session('success'))
+    <div class="alert alert-success text-center">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="table-responsive">
     
     <h3 class="text-center my-5">Lista de memorias RAM</h3>
@@ -28,23 +35,22 @@
         </thead>
         <tbody class="table-group-divider">
     
-            {{-- @foreach ($series as $serie)
+            @foreach ($rams as $ram)
                 <tr>
-                    <th>{{ $serie->id }}</th>
-                    <th scope="row">{{ $serie->serie }}</th>
-                    <td>{{ $serie->descripcion }}</td>
-                    <td>{{ $serie->cantidad }}</td>
-                    <td>{{ $serie->palet }}</td>
-                    <td>{{ $serie->registrado_por }}</td>
-                    <td>{{ $serie->created_at }}</td>
-                    <td>{{ $serie->updated_at }}</td>
+                    <th>{{ $ram->id }}</th>
+                    <th scope="row">{{ $ram->ram }}</th>
+                    <td>{{ $ram->registrado_por }}</td>
+                    <td>{{ $ram->created_at }}</td>
+                    <td>{{ $ram->updated_at }}</td>
                     <td>
-                        <form action="">
+                        <form action="{{ route('ram.destroy', $ram->ram) }}" method="POST">
+                            @csrf
+                            @method('delete')
                             <input type="submit" value="Eliminar" class="btn btn-danger">
                         </form>
                     </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         
         </tbody>
     </table>

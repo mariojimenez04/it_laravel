@@ -14,9 +14,10 @@ class RamController extends Controller
      */
     public function index()
     {
+        $rams = Ram::all();
         //Retornar la vista
         return view('admin.ram.index', [
-
+            'rams' => $rams
         ]);
     }
 
@@ -41,7 +42,7 @@ class RamController extends Controller
     {
         //Realizar el registro
         $this->validate($request,[
-            'ram' => 'required'
+            'ram' => 'required|unique:rams,ram'
         ]);
 
         Ram::create([
@@ -95,5 +96,10 @@ class RamController extends Controller
     public function destroy($id)
     {
         //Eliminar el registro
+        $ram = Ram::where('ram', $id)->first();
+
+        $ram->delete();
+
+        return redirect()->route('ram.index')->with('success', 'Registro eliminado correctamente');
     }
 }

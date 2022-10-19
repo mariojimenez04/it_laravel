@@ -71,7 +71,7 @@ Route::get('/ram/edit', [RamController::class, 'edit'])->name('ram.edit');
 Route::post('/ram/edit', [RamController::class, 'update'])->name('ram.update');
 
 //Delete
-Route::delete('/ram/delete', [RamController::class, 'destroy'])->name('ram.destroy');
+Route::delete('/ram/delete{rams:ram}', [RamController::class, 'destroy'])->name('ram.destroy');
 
 /* RUTAS PARA LA LISTA DE TAMAÑO DE MEMORIAS */
 //index
@@ -145,6 +145,10 @@ Route::delete('/embarque/delete/{laptop_detalles:numero_serie}', [LaptopDetalleC
 
 //Ruta para exportar a excel
 Route::get('/laptop/export/excel/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'exportExcel'])->name('laptop.excel');
+
+//Ruta para importar desde Excel
+Route::get('/laptop/import/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'import'])->name('laptop.import');
+Route::post('/laptop/import/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'importExcel'])->name('laptop.import.excel');
 
 /* NUMEROS DE SERIE DE LAPTOPS */
 //Ruta para el index
