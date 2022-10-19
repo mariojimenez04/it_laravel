@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Laptop_detalle;
 use App\Exports\LaptopDetalleExport;
+use App\Imports\LaptopImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class LaptopDetalleController extends Controller
@@ -12,6 +13,21 @@ class LaptopDetalleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function import($id){
+
+        return view('embarques.laptops.excel',[
+            'id' => $id
+        ]);
+    }
+
+    public function importExcel(Request $request, $id){
+        $archivo = $request->file('laptop_import');
+
+        Excel::import(new LaptopImport, $archivo);
+
+        return redirect('/laptop/index/' . $id)->with('success', 'Archivo importado exitosamente');
     }
 
     public function exportExcel($id) {

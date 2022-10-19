@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ram;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,8 +14,11 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $rams = Ram::all();
         //Retornar la vista
-        return view('admin.index');
+        return view('admin.index', [
+            'rams' => $rams
+        ]);
     }
 
     /**
