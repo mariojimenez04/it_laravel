@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//Ruta para login
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/', [LoginController::class, 'validacion']);
+
+//Ruta para la pagina principal
+Route::get('/index', [InicioController::class, 'index'])->name('index');
+
 /* Rutas para la ADMINISTRACION */
 //Index
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
@@ -88,13 +96,6 @@ Route::post('/memory/edit', [MemoriaController::class, 'update'])->name('memory.
 //Delete
 Route::delete('/memory/delete', [MemoriaController::class, 'destroy'])->name('memory.destroy');
 
-//Ruta para login
-Route::get('/', [LoginController::class, 'login'])->name('login');
-Route::post('/', [LoginController::class, 'validacion']);
-
-//Ruta para la pagina principal
-Route::get('/index', [InicioController::class, 'index'])->name('index');
-
 /* USUARIOS */
 //Ruta para cerrar sesion
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -130,7 +131,7 @@ Route::delete('/embarque/{titulo_embarque:id_emb}/edit', [TituloEmbarqueControll
 
 /* LAPTOP DETALLES */
 //Ruta del inicio
-Route::get('/laptop/index/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'index'])->name('laptop.index');
+Route::get('/laptop/index/{id_titulo}', [LaptopDetalleController::class, 'index'])->name('laptop.index');
 
 //Ruta para registrar laptop
 Route::get('/laptop/create/{laptop_detalles:id_titulo}', [LaptopDetalleController::class, 'create'])->name('laptop.create');

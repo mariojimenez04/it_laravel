@@ -40,11 +40,11 @@ class LaptopDetalleController extends Controller
      */
     public function index($id)
     {
-        $titulo = $id;
         $detalle_laptops = Laptop_detalle::where('id_titulo', $id)->get();
+
         //Retornar la vista de el embarque
         return view('embarques.laptops.index', [
-            'titulo' => $titulo,
+            'id' => $id,
             'detalle_laptops' => $detalle_laptops,
         ]);
     }
@@ -86,22 +86,22 @@ class LaptopDetalleController extends Controller
         ]);
 
         Laptop_detalle::create([
-            'id_detalle' => $request->id_detalle,
-            'modelo' => $request->modelo,
-            'numero_serie' => $request->numero_serie,
-            'diagnostico' => $request->diagnostico ?? 'N/A',
-            'acciones' => $request->acciones ?? 'N/A',
-            'procesador' => $request->procesador,
-            'tamano' => $request->tamano,
-            'color' => $request->color,
-            'capacidad' => $request->capacidad,
-            'ram' => $request->ram,
-            'cantidad' => 1,
-            'status' => $request->status ?? 'N/A',
-            'observaciones' => $request->observaciones ?? 'N/A',
-            'entregado' => 0,
-            'modificado_por' => auth()->user()->name,
-            'id_titulo' => $id,
+            'id_detalle' => $request->id_detalle ?? 'xxxxx',
+            'modelo' => $request->modelo ?? 'xxxxx',
+            'numero_serie' => $request->numero_serie ?? 'xxxxx',
+            'diagnostico' => $request->diagnostico ?? 'xxxxx',
+            'acciones' => $request->acciones ?? 'xxxxx',
+            'procesador' => $request->procesador ?? 'xxxxx',
+            'tamano' => $request->tamano ?? 'xxxxx',
+            'color' => $request->color ?? 'xxxxx',
+            'capacidad' => $request->capacidad ?? 'xxxxx',
+            'ram' => $request->ram ?? 'xxxxx',
+            'cantidad' => 1 ?? 'xxxxx',
+            'status' => $request->status ?? 'xxxxx',
+            'observaciones' => $request->observaciones ?? 'xxxxx',
+            'entregado' => 0 ?? 'xxxxx',
+            'modificado_por' => auth()->user()->name ?? 'xxxxx',
+            'id_titulo' => $id ?? 'xxxxx',
         ]);
 
         return redirect('/laptop/index/'. $id);
