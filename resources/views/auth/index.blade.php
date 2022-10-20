@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('botones')
-    <a href="{{ route('index') }}" class="btn btn-dark">Volver</a>
+    <a href="{{ route('admin.index') }}" class="btn btn-dark">Volver</a>
     <a href="{{ route('users.create') }}" class="btn btn-dark">Registrar Usuario</a>
 @endsection
 

@@ -3,6 +3,13 @@
 @section('botones')
     <a href="{{ route('index') }}" class="btn btn-dark">Volver</a>
     <a href="{{ route('ram.index') }}" class="btn btn-dark">Ver lista de memoria Ram</a>
+    @if (auth()->user()->admin === 1)
+
+        <a href="{{ route('users.index') }}" class="btn btn-primary">Ver usuarios</a>
+        
+    @endif
+    <a href="{{ route('processor.index') }}" class="btn btn-dark">Ver procesadores</a>
+
 @endsection
 
 @section('titulo')

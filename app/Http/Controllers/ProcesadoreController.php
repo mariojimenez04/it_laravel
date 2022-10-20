@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Procesadore;
 use Illuminate\Http\Request;
 
 class ProcesadoreController extends Controller
@@ -13,7 +14,11 @@ class ProcesadoreController extends Controller
      */
     public function index()
     {
-        //
+        $registros = Procesadore::all();
+        //Retornar la vista
+        return view('admin.procesadores.index', [
+            'registros' => $registros
+        ]);
     }
 
     /**

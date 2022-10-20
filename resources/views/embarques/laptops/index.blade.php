@@ -2,15 +2,15 @@
 
 @section('botones')
     <a href="{{ route('embarque.index') }}" class="btn btn-dark">Volver</a>
-    <a href="{{ route('laptop.create', $titulo) }}" class="btn btn-dark">Registrar laptop</a>
-    <a href="{{ route('laptop.import', $titulo) }}" class="btn btn-primary">Importar archivo Excel Laptops</a>
-    <a href="{{ route('serie.create', $titulo) }}" class="btn btn-dark">Importar Excel No. series</a>
-    <a href="{{ route('serie.index', $titulo) }}" class="btn btn-dark">Ver No. series</a>
-    <a href="{{ route('laptop.excel', $titulo) }}" class="btn btn-success">Descargar en Excel</a>
+    <a href="{{ route('laptop.create', $id) }}" class="btn btn-dark">Registrar laptop</a>
+    <a href="{{ route('laptop.import', $id) }}" class="btn btn-primary">Importar archivo Excel Laptops</a>
+    <a href="{{ route('serie.create', $id) }}" class="btn btn-dark">Importar Excel No. series</a>
+    <a href="{{ route('serie.index', $id) }}" class="btn btn-dark">Ver No. series</a>
+    <a href="{{ route('laptop.excel', $id) }}" class="btn btn-success">Descargar en Excel</a>
 @endsection
 
 @section('titulo')
-    Detalle de embarque - {{ $titulo }}
+    Detalle de embarque - {{ $id }}
 @endsection
 
 @section('contenido')
