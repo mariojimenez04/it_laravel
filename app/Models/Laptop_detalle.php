@@ -26,5 +26,6 @@ class Laptop_detalle extends Model
         'entregado',
         'modificado_por',
         'id_titulo',
+        'pallet',
     ];
 }

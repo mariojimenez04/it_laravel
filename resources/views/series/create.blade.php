@@ -17,14 +17,15 @@
 @endforeach
 
 <div class="bd-callout bd-callout-warning container">
-    Para una correcta importacion de datos toma en cuenta los siguientes datos en el encabezado en el archivo excel:
+    Para una correcta importacion de datos toma en cuenta los siguientes consideraciones:
     <div class="mt-2">
-        <p><strong>¡Importante!</strong> el titulo de el embarque debe ser el mismo de el archivo que se va a importar</p>
-        <p>Serie</p>
-        <p>Descripcion</p>
-        <p>Cantidad</p>
-        <p>Pallet</p>
-        <p>Embarque</p>
+        <p><strong>¡Importante!</strong> el nombre de el embarque debe ser el mismo al asignado de la columna E) del archivo que se va a importar</p>
+        <p><strong>¡Importante!</strong> el acomodo de los campos en el archivo debe ser de la siguiente manera:</p>
+        <p>A) Serie</p>
+        <p>B) Descripcion</p>
+        <p>C) Cantidad</p>
+        <p>D) Pallet</p>
+        <p>E) Embarque</p>
     </div>
 </div>
 

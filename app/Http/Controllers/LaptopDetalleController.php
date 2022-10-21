@@ -102,6 +102,7 @@ class LaptopDetalleController extends Controller
             'entregado' => 0 ?? 'xxxxx',
             'modificado_por' => auth()->user()->name ?? 'xxxxx',
             'id_titulo' => $id ?? 'xxxxx',
+            'pallet' => $$request->pallet ?? 'xxxxx',
         ]);
 
         return redirect('/laptop/index/'. $id);
