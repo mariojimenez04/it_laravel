@@ -34,26 +34,27 @@ class LaptopImport implements ToModel, WithHeadingRow
             'capacidad' => $row['capacidad'] ?? 'xxxxx',
             'ram' => $row['ram'] ?? 'xxxxx',
             'cantidad' => $row['cantidad'] ?? 'xxxxx',
-            'status' => $row['status'] ?? 'xxxxx',
-            'entregado' => $row['entregado'] ?? 'xxxxx',
+            'condicion' => $row['status'] ?? 'xxxxx',
+            'entregado' => $row['entregado'] ?? '0',
             'modificado_por' => auth()->user()->name,
             'id_titulo' => $row['id_titulo'],
+            'pallet' => $row['pallet']  ?? 'xxxxx',
         ]);
 
     }
 
-    // public function rules(): array
-    // {
-    //     return [
+    public function rules(): array
+    {
+        return [
     //         'id_detalle' => [
     //             'required'
     //         ],
     //         'modelo' => [
     //             'required'
     //         ],
-    //         'numero_serie' => [
-    //             'required'
-    //         ],
+            'numero_serie' => [
+                'required|unique:laptop_detalles,numero_serie'
+            ],
     //         'observaciones' => [
     //             'required'
     //         ],
@@ -90,6 +91,6 @@ class LaptopImport implements ToModel, WithHeadingRow
     //         'id_titulo' => [
     //             'required'
     //         ],
-    //     ];
-    // }
+        ];
+    }
 }

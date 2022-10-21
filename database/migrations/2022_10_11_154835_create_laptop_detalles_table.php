@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_detalle')->nullable();
             $table->string('modelo')->nullable();
-            $table->string('numero_serie')->nullable()->unique();
+            $table->string('numero_serie')->nullable();
             $table->string('observaciones')->nullable();
             $table->longText('diagnostico')->nullable();
             $table->longText('acciones')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('capacidad')->nullable();
             $table->string('ram')->nullable();
             $table->string('cantidad')->nullable();
-            $table->string('status')->nullable();
+            $table->string('condicion')->nullable();
             $table->boolean('entregado')->nullable();
             $table->string('modificado_por')->nullable();
             $table->string('id_titulo')->nullable();

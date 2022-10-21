@@ -37,8 +37,8 @@
             <th scope="col">Capacidad</th>
             <th scope="col">RAM</th>
             <th scope="col">Cantidad</th>
+            <th scope="col">Condicion</th>
             <th scope="col">Status</th>
-            <th scope="col">Entregado</th>
             <th scope="col">Modificado Por</th>
             <th scope="col">Ultima modificacion</th>
             <th scope="col">Acciones</th>
@@ -61,10 +61,11 @@
                     <td>{{ $detalle->capacidad }}</td>
                     <td>{{ $detalle->ram }}</td>
                     <td>{{ $detalle->cantidad }}</td>
-                    <td>{{ $detalle->status }}</td>
+                    <td>{{ $detalle->condicion }}</td>
                     <td>{{ $detalle->entregado }}</td>
                     <td>{{ $detalle->modificado_por }}</td>
                     <td>{{ $detalle->updated_at }}</td>
+                    @if (auth()->user()->admin === 1 || auth()->user()->supervisor === 1)
                     <form action="{{ route('laptop.destroy', $detalle->numero_serie) }}" method="POST">
                         @csrf
                         @method('delete')
@@ -73,6 +74,9 @@
                                 <input type="submit" value="Eliminar" class="btn btn-danger">
                             </td>
                     </form>
+                    @endif
+                    
+
                 </tr>
             @endforeach
         
