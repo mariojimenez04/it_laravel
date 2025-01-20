@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
             <div class="container-fluid">
                 <h2 class="me-5">
-                    <a class="navbar-brand" href="{{ route('index') }}">IT Office Solutions</a>
+                    <a class="navbar-brand" href="{{ route('index') }}">Titulo pagina</a>
                 </h2>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

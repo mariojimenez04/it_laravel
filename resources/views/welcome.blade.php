@@ -22,7 +22,7 @@
         
         <div class="login">
             <div>
-                <a href="/" class="text-center"><h1>It Office Solutions</h1></a>
+                <a href="/" class="text-center"><h1>Titulo pagina</h1></a>
                 
                 <div class="login-contenedor">
                     <div class="login-contenido">

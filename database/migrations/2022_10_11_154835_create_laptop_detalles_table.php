@@ -13,24 +13,25 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('laptop_detalles', function (Blueprint $table) {
+        Schema::create('product_detail', function (Blueprint $table) {
             $table->id();
-            $table->string('id_detalle')->nullable();
-            $table->string('modelo')->nullable();
-            $table->string('numero_serie')->nullable();
-            $table->string('observaciones')->nullable();
-            $table->longText('diagnostico')->nullable();
-            $table->longText('acciones')->nullable();
-            $table->string('procesador')->nullable();
-            $table->string('tamano')->nullable();
+            $table->string('id_detail')->nullable();
+            $table->string('title')->nullable();
+            $table->string('model')->nullable();
+            $table->string('serial_number')->nullable();
+            // $table->string('observaciones')->nullable();
+            // $table->longText('diagnostico')->nullable();
+            $table->longText('comments')->nullable();
+            $table->string('sku')->nullable();
+            $table->string('details')->nullable();
+            // $table->string('size')->nullable();
             $table->string('color')->nullable();
-            $table->string('capacidad')->nullable();
-            $table->string('ram')->nullable();
-            $table->string('cantidad')->nullable();
+            // $table->string('capacidad')->nullable();
+            // $table->string('ram')->nullable();
+            $table->int('cantidad')->nullable();
             $table->string('condicion')->nullable();
-            $table->boolean('entregado')->nullable();
-            $table->string('modificado_por')->nullable();
-            $table->string('id_titulo')->nullable();
+            $table->boolean('active')->nullable();
+            $table->string('edited_by')->nullable();
             $table->timestamps();
         });
     }
@@ -42,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laptop_detalles');
+        Schema::dropIfExists('product_detail');
     }
 };
