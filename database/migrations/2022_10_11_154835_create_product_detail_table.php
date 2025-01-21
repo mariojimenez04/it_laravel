@@ -31,6 +31,7 @@ return new class extends Migration
             $table->int('cantidad')->nullable();
             $table->string('condicion')->nullable();
             $table->boolean('active')->nullable();
+            $table->boolean('option_enabled');
             $table->string('edited_by')->nullable();
             $table->timestamps();
         });

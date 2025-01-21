@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('registro_numero_series', function (Blueprint $table) {
+        Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_serie')->nullable();
+            $table->string('patient')->nullable();
+            $table->string('full_name')->nullable();
             $table->string('modificado_por')->nullable();
             $table->timestamps();
         });
