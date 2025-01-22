@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('edit_by');
+            $table->boolean('option_enabled');
             $table->timestamps();
         });
     }

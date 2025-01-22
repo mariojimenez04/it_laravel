@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('location')->nullable();
-            $table->string('modificado_por')->nullable();
+            $table->string('edit_by')->nullable();
             $table->boolean('option_enabled');
             $table->timestamps();
         });

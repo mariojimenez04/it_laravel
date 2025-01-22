@@ -44,6 +44,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('edit_by')->nullable();
+            $table->boolean('option_enabled');
         });
     }
 
