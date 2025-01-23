@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rams', function (Blueprint $table) {
+        Schema::create('analysis', function (Blueprint $table) {
             $table->id();
-            $table->string('ram')->nullable();
-            $table->string('registrado_por')->nullable();
+            $table->string('analysis_name')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('analysis_method')->nullable();
+            $table->string('values_reference')->nullable();
+            $table->string('price')->nullable();
+            $table->string('edit_by')->nullable();
+            $table->boolean('option_enabled');
             $table->timestamps();
         });
     }

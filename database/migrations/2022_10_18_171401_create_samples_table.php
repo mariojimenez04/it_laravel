@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('doctors', function (Blueprint $table) {
+        Schema::create('samples', function (Blueprint $table) {
             $table->id();
-            $table->string('serie')->nullable();
-            $table->string('descripcion')->nullable();
-            $table->string('cantidad')->nullable();
-            $table->string('palet')->nullable();
-            $table->string('registrado_por')->nullable();
-            $table->string('id_titulo')->nullable();
+            $table->int('sampleId')->nullable();
+            $table->int('orderId')->nullable();
+            $table->datetime('collection_datetime')->nullable();
+            $table->string('coments')->nullable();
+            $table->string('edit_by')->nullable();
+            $table->boolean('confirmed')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('series');
+        Schema::dropIfExists('colors');
     }
 };

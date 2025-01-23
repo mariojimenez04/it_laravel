@@ -13,10 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('memorias', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('memoria')->nullable();
-            $table->string('registrado_por')->nullable();
+            $table->string('orderId')->nullable();
+            $table->int('patientId')->nullable();
+            $table->int('doctorId')->nullable();
+            $table->date('request_date')->nullable();
+            $table->string('status')->nullable();
+            $table->longText('coments')->nullable();
+            $table->string('edit_by')->nullable();
+            $table->boolean('option_enabled');
             $table->timestamps();
         });
     }
