@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('orderId')->nullable();
-            $table->int('patientId')->nullable();
-            $table->int('doctorId')->nullable();
+            $table->integer('patientId')->nullable();
+            $table->integer('doctorId')->nullable();
             $table->date('request_date')->nullable();
             $table->string('status')->nullable();
             $table->longText('coments')->nullable();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memorias');
+        Schema::dropIfExists('orders');
     }
 };

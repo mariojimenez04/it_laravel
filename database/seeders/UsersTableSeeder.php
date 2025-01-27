@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UsersTableSeeder extends Seeder
 {
@@ -32,6 +34,7 @@ class UsersTableSeeder extends Seeder
             'create_users' => 1,
             'edit_users' => 1,
             'delete_users' => 1,
+            'users_list' => 1,
             'create_product' => 1,
             'edit_product' => 1,
             'delete_product' => 1,
@@ -39,6 +42,7 @@ class UsersTableSeeder extends Seeder
             'edit_inventory' => 1,
             'delete_inventory' => 1,
             'edit_by' => 'admin',
+            'option_enabled' => 1,
         ]);
     }
 }

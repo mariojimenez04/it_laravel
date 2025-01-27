@@ -18,11 +18,11 @@ class InicioController extends Controller
      */
     public function index()
     {
-        $embarques = Titulo_embarque::all();
+        // $embarques = Titulo_embarque::all();
 
         //Retornar la vista para el index
         return view('inicio.index',[
-            'embarques' => $embarques
+            // 'embarques' => $embarques
         ]);
     }
 

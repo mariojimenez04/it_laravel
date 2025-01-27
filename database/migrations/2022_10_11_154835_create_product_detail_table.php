@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('color')->nullable();
             // $table->string('capacidad')->nullable();
             // $table->string('ram')->nullable();
-            $table->int('cantidad')->nullable();
+            $table->integer('cantidad')->nullable();
             $table->string('condicion')->nullable();
             $table->boolean('active')->nullable();
             $table->boolean('option_enabled');

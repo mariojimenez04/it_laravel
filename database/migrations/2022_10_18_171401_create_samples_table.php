@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
             $table->id();
-            $table->int('sampleId')->nullable();
-            $table->int('orderId')->nullable();
+            $table->integer('sampleId')->nullable();
+            $table->integer('orderId')->nullable();
             $table->datetime('collection_datetime')->nullable();
             $table->string('coments')->nullable();
             $table->string('edit_by')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colors');
+        Schema::dropIfExists('samples');
     }
 };

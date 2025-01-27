@@ -26,7 +26,7 @@ return new class extends Migration
             /** accesos para las herramientas generales **/
             $table->boolean('settings')->nullable();
             $table->boolean('register_product')->nullable();
-            $table->boolean('delete_product')->nullable();
+            // $table->boolean('delete_product')->nullable();
             $table->boolean('logs')->nullable(); //Este hace referencia a los movimientos de los usuarios
              /** accesos para editar, crear o eliminar usuarios **/
             $table->boolean('create_users')->nullable();
@@ -41,10 +41,10 @@ return new class extends Migration
             $table->boolean('inventory')->nullable();
             $table->boolean('edit_inventory')->nullable();
             $table->boolean('delete_inventory')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
             $table->string('edit_by')->nullable();
             $table->boolean('option_enabled');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
