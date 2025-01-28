@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Titulo_embarque;
 use Illuminate\Http\Request;
 
-class InicioController extends Controller
+class AnalysisController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -18,12 +13,8 @@ class InicioController extends Controller
      */
     public function index()
     {
-        // $embarques = Titulo_embarque::all();
-
-        //Retornar la vista para el index
-        return view('main_menus.index',[
-            // 'embarques' => $embarques
-        ]);
+        //Navegacion para los analisis de pacientes
+        return view('main_menus.documents_analysis.index');
     }
 
     /**
@@ -33,7 +24,8 @@ class InicioController extends Controller
      */
     public function create()
     {
-        //
+        //Retorna la vista
+        return view('main_menus.documents_analysis.create');
     }
 
     /**

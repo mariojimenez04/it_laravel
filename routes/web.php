@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LaptopDetalleController;
 use App\Http\Controllers\LoginController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\RamController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TituloEmbarqueController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\WharehouseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,50 +39,50 @@ Route::get('/index', [InicioController::class, 'index'])->name('index');
 //Index
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
 
-/* RUTAS PARA LA LISTA DE COLORES */
+/* RUTAS PARA LA LISTA DE ANALISIS DE PACIENTES */
 //Index
-Route::get('/colors/index', [ColorController::class, 'index'])->name('color.index');
+Route::get('/analysis/index', [AnalysisController::class, 'index'])->name('analysis.index');
 
 //Create
-Route::get('/colors/create', [ColorController::class, 'create'])->name('color.create');
-Route::post('/colors/create', [ColorController::class, 'store'])->name('color.store');
+Route::get('/analysis/create', [AnalysisController::class, 'create'])->name('analysis.create');
+Route::post('/analysis/create', [AnalysisController::class, 'store'])->name('analysis.store');
 
 //Edit
-Route::get('/colors/edit', [ColorController::class, 'edit'])->name('color.edit');
-Route::post('/colors/edit', [ColorController::class, 'update'])->name('color.update');
+Route::get('/analysis/edit', [AnalysisController::class, 'edit'])->name('analysis.edit');
+Route::post('/analysis/edit', [AnalysisController::class, 'update'])->name('analysis.update');
 
 //Delete
-Route::delete('/colors/delete', [ColorController::class, 'destroy'])->name('color.destroy');
+Route::delete('/analysis/delete', [AnalysisController::class, 'destroy'])->name('analysis.destroy');
 
-/* RUTAS PARA LA LISTA DE LOS PROCESADORES */
+/* RUTAS PARA LA LISTA DE LOS DOCTORES */
 //Index
-Route::get('/processor/index', [ProcesadoreController::class, 'index'])->name('processor.index');
+Route::get('/doctor/index', [DoctorsController::class, 'index'])->name('doctor.index');
 
 //Create
-Route::get('/processor/create', [ProcesadoreController::class, 'create'])->name('processor.create');
-Route::post('/processor/create', [ProcesadoreController::class, 'store'])->name('processor.store');
+Route::get('/doctor/create', [DoctorsController::class, 'create'])->name('doctor.create');
+Route::post('/doctor/create', [DoctorsController::class, 'store'])->name('doctor.store');
 
 //Edit
-Route::get('/processor/edit/', [ProcesadoreController::class, 'edit'])->name('processor.edit');
-Route::post('/processor/edit/', [ProcesadoreController::class, 'update'])->name('processor.update');
+Route::get('/doctor/edit/', [DoctorsController::class, 'edit'])->name('doctor.edit');
+Route::post('/doctor/edit/', [DoctorsController::class, 'update'])->name('doctor.update');
 
 //Delete
-Route::delete('/processor/index', [ProcesadoreController::class, 'destroy'])->name('processor.destroy');
+Route::delete('/doctor/delete', [DoctorsController::class, 'destroy'])->name('doctor.destroy');
 
-/* RUTAS PARA LA LISTA DE MEMORIA RAM */
+/* RUTAS PARA EL ALMACEN*/
 //Index
-Route::get('/ram/index', [RamController::class, 'index'])->name('ram.index');
+Route::get('/wharehouse/index', [WharehouseController::class, 'index'])->name('wharehouse.index');
 
 //Create
-Route::get('/ram/create', [RamController::class, 'create'])->name('ram.create');
-Route::post('/ram/create', [RamController::class, 'store'])->name('ram.store');
+Route::get('/wharehouse/create', [WharehouseController::class, 'create'])->name('wharehouse.create');
+Route::post('/wharehouse/create', [WharehouseController::class, 'store'])->name('wharehouse.store');
 
 //Edit
-Route::get('/ram/edit', [RamController::class, 'edit'])->name('ram.edit');
-Route::post('/ram/edit', [RamController::class, 'update'])->name('ram.update');
+Route::get('/wharehouse/edit', [WharehouseController::class, 'edit'])->name('wharehouse.edit');
+Route::post('/wharehouse/edit', [WharehouseController::class, 'update'])->name('wharehouse.update');
 
 //Delete
-Route::delete('/ram/delete{rams:ram}', [RamController::class, 'destroy'])->name('ram.destroy');
+Route::delete('/wharehouse/delete', [WharehouseController::class, 'destroy'])->name('wharehouse.destroy');
 
 /* RUTAS PARA LA LISTA DE TAMAÑO DE MEMORIAS */
 //index

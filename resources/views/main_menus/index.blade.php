@@ -18,22 +18,25 @@
 
         <div class="row justify-content-center gap-2">
 
+            {{-- Register new document --}}
             <div class="col-sm-3 mb-5">
 
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M20 10H4v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8ZM9 13v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                                <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2Z"/>
+                              </svg>                              
                         </div>
-                        <p class="card-text">Registrar nuevo ticket para que los encargados de sistemas te den continuidad en lo que requieres</p>
-                        <a href="{{ route('ticket.create') }}" class="btn btn-primary">Registrar ticket</a>
+                        <p class="card-text">Registrar nuevo caso para paciente</p>
+                        <a href="{{ route('analysis.index') }}" class="btn btn-primary">Archivo</a>
                     </div>
                 </div>
 
             </div>
 
+            {{-- Register new doctor --}}
             <div class="col-sm-3">
 
                 <div class="card">
@@ -45,13 +48,14 @@
                             </svg>
 
                         </div>
-                        <p class="card-text">Dar seguimiento a los tickets que haz registrado y checar cual es su status</p>
-                        <a href="{{ route('ticket.index') }}" class="btn btn-primary">Revisar tickets</a>
+                        <p class="card-text">Revisar listado de doctores</p>
+                        <a href="{{ route('index') }}" class="btn btn-primary">Doctores</a>
                     </div>
                 </div>
 
             </div>
 
+            {{-- Wharehouse --}}
             <div class="col-sm-3">
 
                 <div class="card">
@@ -61,13 +65,14 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
-                        <p class="card-text">Editar tu perfil (Nombre, contraseña, correo, etc.)</p>
-                        <a href="" class="btn btn-primary">Editar usuario</a>
+                        <p class="card-text">Entrar al inventario de tu almacen</p>
+                        <a href="{{ route('wharehouse.index') }}" class="btn btn-primary">Almacen</a>
                     </div>
                 </div>
 
             </div>
 
+            {{-- Administration --}}
             @if (auth()->user()->admin === 1)
                 <div class="col-sm-3">
 
@@ -78,14 +83,15 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
                                 </svg>
                             </div>
-                            <p class="card-text">Añadir nuevo usuario(Opcion solo administrador)</p>
-                            <a href="{{ route('user.register') }}" class="btn btn-primary">Registrar usuario</a>
+                            <p class="card-text">Administracion usuarios(Opcion solo administrador)</p>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary">Usuarios</a>
                         </div>
                     </div>
 
                 </div>
             @endif
 
+            {{-- Kardex --}}
             @if (auth()->user()->admin === 1)
                 <div class="col-sm-3">
 
@@ -97,13 +103,14 @@
                                 </svg>
                             </div>
                             <p class="card-text">Lista usuarios(Opcion solo administrador)</p>
-                            <a href="{{ route('user.register') }}" class="btn btn-primary">Ver</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary">Ver</a>
                         </div>
                     </div>
 
                 </div>
             @endif
 
+            {{-- Users --}}
             @if (auth()->user()->admin === 1)
                 <div class="col-sm-3">
 
@@ -115,7 +122,7 @@
                                   </svg>
                             </div>
                             <p class="card-text">Movimientos(Opcion solo administrador)</p>
-                            <a href="{{ route('user.register') }}" class="btn btn-primary">Ver</a>
+                            <a href="#" class="btn btn-primary">Ver</a>
                         </div>
                     </div>
 
