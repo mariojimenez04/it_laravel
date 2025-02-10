@@ -40,6 +40,18 @@ Panel de administracion
                     <div class="card-body">
                         <div class="card-title">
 
+                            <img src="{{ asset('img/paciente.png') }}" alt="" class="img-small">
+
+                        </div>
+                        <a href="{{ route('index') }}" class="btn btn-primary">Dar de alta paciente</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+
                             <img src="../img/equipo-medico.png" alt="" class="img-small">
 
                         </div>
