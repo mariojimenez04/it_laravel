@@ -9,7 +9,28 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
+
+    <header class="topbar p-2">
+        <div>
+            <h2  class="fw-bold">@yield('titulo')</h2>
+        </div>
+
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ "(" . auth()->user()->user_id . ") " . auth()->user()->name }}
+        </a>
+    </header>
+
+    <nav class="sidebar mt-2">
+        <h2>Menú</h2>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+        {{-- <nav class="navbar navbar-vertical navbar-expand-lg navbar-light bg-light p-4">
             <div class="container-fluid">
                 <h2 class="me-5">
                     <a class="navbar-brand" href="{{ route('index') }}">Titulo pagina</a>
@@ -26,12 +47,12 @@
                             <a class="nav-link" href="{{ route('index') }}">Inicio</a>
                         </li>
 
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('embarque.index') }}">Embarques(Laptops)</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/processors/index">Embarques(Productos)</a>
-                        </li> --}}
+                        </li> 
                             
                     </ul>
                         <li class="nav-item dropdown me-2">
@@ -55,13 +76,13 @@
                         </li>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
         <div class="text-center my-4">
-            <h2 class="fw-bold">@yield('titulo')</h2>
+            
         </div>
 
-    <div>
+    <div class="contenido">
         @yield('contenido')
     </div>
 
